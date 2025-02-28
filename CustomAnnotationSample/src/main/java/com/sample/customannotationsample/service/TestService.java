@@ -1,7 +1,7 @@
-package com.sample.service;
+package com.sample.customannotationsample.service;
 
-import com.sample.common.annotation.ExecutableMethod;
-import com.sample.common.service.ExecutableMethodRegistry;
+import com.sample.customannotationsample.common.annotation.ExecutableMethod;
+import com.sample.customannotationsample.common.service.ExecutableMethodRegistry;
 import jdk.jfr.Description;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

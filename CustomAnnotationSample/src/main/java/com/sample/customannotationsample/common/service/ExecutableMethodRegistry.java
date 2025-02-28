@@ -1,6 +1,6 @@
-package com.sample.common.service;
+package com.sample.customannotationsample.common.service;
 
-import com.sample.common.annotation.ExecutableMethod;
+import com.sample.customannotationsample.common.annotation.ExecutableMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.context.ApplicationContext;
@@ -34,7 +34,7 @@ public class ExecutableMethodRegistry implements ApplicationListener<ContextRefr
                 }
             }
         }
-        log.debug("enableMethod Data Setting Check : {}" , enableMethodCheckMap);
+        log.info("enableMethod Data Setting Check : {}" , enableMethodCheckMap);
     }
 
     /**

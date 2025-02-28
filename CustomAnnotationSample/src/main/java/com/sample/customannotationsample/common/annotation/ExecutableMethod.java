@@ -1,4 +1,4 @@
-package com.sample.common.annotation;
+package com.sample.customannotationsample.common.annotation;
 
 import org.springframework.context.annotation.Description;
 
