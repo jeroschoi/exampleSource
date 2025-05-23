@@ -3,8 +3,8 @@ package com.sample.customannotationsample.controller;
 import com.sample.customannotationsample.common.service.ExecutableMethodRegistry;
 import com.sample.customannotationsample.service.TestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,13 +17,15 @@ public class TestController {
         testService.customAnnotationTest();
     }
 
-    @RequestMapping("/test/aop/false")
-    public void testAopFalse() {
-        executableMethodRegistry.setMethodExecutable( "customAnnotationTest", false);
+    @PutMapping("/{methodName}/status")
+    public ResponseEntity<String> setMethodStatus(@PathVariable String methodName, @RequestParam boolean enable) {
+        executableMethodRegistry.setMethodExecutable(methodName, enable);
+        return ResponseEntity.ok(methodName + " method status set to " + (enable ? "enabled" : "disabled"));
     }
 
-    @RequestMapping("/test/aop/true")
-    public void testAopTrue() {
-        executableMethodRegistry.setMethodExecutable( "customAnnotationTest", false);
+    @GetMapping("/{methodName}/status")
+    public ResponseEntity<Boolean> getMethodStatus(@PathVariable String methodName) {
+        boolean isExecutable = executableMethodRegistry.isMethodExecutable(methodName);
+        return ResponseEntity.ok(isExecutable);
     }
 }
